@@ -1,0 +1,29 @@
+t = time;
+nKeys = thisComp.layer("xPosGuide").position.numKeys;
+ref = thisComp.layer("xPosGuide").position;
+
+function findNearestKeys(comp){
+    
+    var keyTimes = [];
+    var tDiff;
+    for ( var i = 1; i <= comp.numKeys; i++){
+        tDiff = Math.abs(comp.key(i).time - t);
+        keyTimes.push({
+            td: tDiff,
+            keyN: comp.key(i)
+            }
+        );
+    }
+    return keyTimes.sort(function(obj1, obj2) {
+        return obj1.td - obj2.td;
+    });
+    
+}
+
+var allKeys = findNearestKeys(ref);
+allKeys.length = 2;
+var strKeys = "";
+
+for(var i = 1; i <= allKeys.length; i++) {
+	strKeys = strKeys + "Key " + allKeys[i-1].keyN.index + ": " + timeToFrames(allKeys[i-1].td, 25, isDuration = false) + "\n";
+}
