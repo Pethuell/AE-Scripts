@@ -1,0 +1,17 @@
+var ref = thisComp.layer("xPosGuide").position;
+var key1 = ref.key(1);
+var key2 = ref.key(2);
+
+function timeFromKey(key) {
+    return Math.abs(t - key.time);
+}
+
+if( timeFromKey(key1) === 0 || timeFromKey(key2) === 0 ){
+    "I am actually literally *on* a keyframe right now"
+} else if(timeFromKey(key1) > timeFromKey(key2)) {
+    "I am closer to the next keyframe"
+} else if (timeFromKey(key2) > timeFromKey(key1)) {
+    "I am closer to the last keyframe"
+} else {
+    "I'm equidistant I guess."
+}
