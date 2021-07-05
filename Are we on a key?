@@ -1,0 +1,5 @@
+if(thisComp.layer("xPosGuide").position.nearestKey(time).time === t){
+    text.sourceText  = 'This is a keyframe and there are ' + nKeys + ' keys overall';
+} else {
+    text.sourceText = 'This is not a keyframe';
+}
